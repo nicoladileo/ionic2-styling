@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-buttons start>
+      <button icon-only ion-button (click)="resetData()"><ion-icon name="refresh"></ion-icon></button>
+    </ion-buttons>
+
+    <ion-buttons end>
+      <button icon-only ion-button (click)="filterData()"><ion-icon name="funnel"></ion-icon></button>
+      <button icon-only ion-button (click)="mapData()"><ion-icon name="build"></ion-icon></button>
+      <button icon-only ion-button (click)="reduceData()"><ion-icon name="calculator"></ion-icon></button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list no-lines>
+    <ion-item *ngFor="let c of modifiedCities">
+      <ion-avatar item-left>
+        <img [src]="c.picture"/>
+      </ion-avatar>
+      <h4>{{c.city}}</h4>
+      <p [ngClass]="{'classOver':c.population > 3000000, 'classLower':c.population <= 3000000}">{{c.nation}} - Population: {{c.population}} people</p>
+    </ion-item>
+    <h4 id="totalPopulationLabel">Total population: {{totalPopulation}} people</h4>
+    <button [outline]="isOutline" (click)="clickTestButton()" full ion-button>Test button</button>
+  </ion-list>
+</ion-content>
